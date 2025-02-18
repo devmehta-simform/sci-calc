@@ -161,9 +161,15 @@ eqbtn.addEventListener("click", (e) => {
     const postCharArray = InfixToPostfixUtil.convertInfToPost(infCharArray);
 
     console.log(postCharArray);
+    console.log(
+      input.selectionStart,
+      input.selectionEnd,
+      input.value.toString().length
+    );
 
     input.value = evaluatePost(postCharArray);
-    input.selectionStart = 0;
+    input.selectionStart = input.selectionEnd = input.value.toString().length;
+    cursorPos = input.value.toString().length;
   } catch (error) {
     console.trace(error);
   }
